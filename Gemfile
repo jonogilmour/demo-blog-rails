@@ -46,6 +46,7 @@ group :development, :test do
   gem "rspec-rails"
   # For assert template in rspec
   gem "rails-controller-testing", "~> 1.0"
+  gem "factory_bot_rails"
 end
 
 group :development do
