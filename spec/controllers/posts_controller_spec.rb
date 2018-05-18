@@ -43,4 +43,21 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe "GET edit" do
+    before(:each) do
+      post = build(:post)
+      post.update_attribute(:id, 245)
+    end
+
+    it "responds 200" do
+      get :edit, params: { id: 245 }
+      expect(response.status).to eq(200)
+    end
+
+    it "renders the show template" do
+      get :edit, params: { id: 245 }
+      expect(response).to render_template("edit")
+    end
+  end
+
 end
