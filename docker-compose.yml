@@ -10,3 +10,11 @@ services:
       - "3005:3000"
     environment:
       - TRUSTED_IP="0.0.0.0"
+      - RAILS_ENV=development
+  tester:
+    build: .
+    command: guard --no-bundler-warning --no-interactions
+    volumes:
+      - .:/blog
+    environment:
+      - RAILS_ENV=development

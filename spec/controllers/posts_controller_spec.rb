@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  render_views
 
   describe "GET index" do
     it "responds 200" do
@@ -40,6 +41,11 @@ RSpec.describe PostsController, type: :controller do
     it "renders the show template" do
       get :show, params: { id: 245 }
       expect(response).to render_template("show")
+    end
+
+    it "renders a comments form from partial" do
+      get :show, params: { id: 245 }
+      expect(response).to render_template(partial: "comments/_form")
     end
   end
 
