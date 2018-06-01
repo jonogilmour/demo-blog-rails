@@ -1,24 +1,27 @@
-# README
+# Demo Rails Blog App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Very simple demonstration blog application in Rails with Rspec tests. Comes with Docker support.
 
-Things you may want to cover:
+See Gemfile for dependencies.
 
-* Ruby version
+## Running
 
-* System dependencies
+To run production server in Docker:
 
-* Configuration
+```
+docker-compose up
+```
 
-* Database creation
+For dev mode:
 
-* Database initialization
+```
+docker-compose -f docker-compose-dev.yml run blog
+```
 
-* How to run the test suite
+Which will open a bash prompt to the webserver container to run `rails s` or `rails g` and so on for development. Then in a separate terminal, run:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+docker-compose -f docker-compose-dev.yml run tester
+```
 
-* Deployment instructions
-
-* ...
+which runs Guard with Rspec for automated tests.
