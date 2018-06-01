@@ -31,6 +31,10 @@ RSpec.describe PostsController, type: :controller do
     before(:each) do
       post = build(:post)
       post.update_attribute(:id, 245)
+
+      post = build(:post)
+      post.update_attribute(:id, 246)
+      post.comments.create(attributes_for(:comment))
     end
 
     it "responds 200" do
@@ -46,6 +50,11 @@ RSpec.describe PostsController, type: :controller do
     it "renders a comments form from partial" do
       get :show, params: { id: 245 }
       expect(response).to render_template(partial: "comments/_form")
+    end
+
+    it "renders the comments partial if comments are present" do
+      get :show, params: { id: 246 }
+      expect(response).to render_template(partial: "comments/_comment")
     end
   end
 

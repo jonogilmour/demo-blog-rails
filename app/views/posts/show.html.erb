@@ -26,12 +26,12 @@
 
 <section class="section comments">
   <div class="container">
-    <h2 class="subtitle is-5"><strong><%= @post.comments.count %> Comments</h2>
-    <%= render @post.comments %>
+    <h2 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h2>
+    <%= render partial: "comments/comment", collection: @post.comments, as: :comment %>
     <div class="comment-form">
       <hr>
       <h3 class="subtitle is-3">Leave a reply</h3>
-      <%= render 'comments/form' %>
+      <%= render 'comments/form', post: @post %>
     </div>
   </div>
 </section>
